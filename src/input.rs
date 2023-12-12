@@ -17,12 +17,15 @@ pub struct GraphInput {
 impl GraphInput {
     /// ファイル名を指定してグラフを読み込む
     pub fn input_from_ascii_file(filename: &str) -> Self {
-        let file = read_to_string(filename).ok().unwrap();
+        // ファイルの読み込み
+        let Ok(file) = read_to_string(filename) else {
+            panic!("No such file: {}", filename);
+        };
 
         let (mut v_size, mut e_size) = (0, 0);
         let mut edges = vec![];
 
-        // 読み込み
+        // 辺の追加
         for line in file.lines() {
             if line.starts_with('p') {
                 if let [_, _, v_str, e_str] = line.split_whitespace().collect::<Vec<&str>>()[..] {
