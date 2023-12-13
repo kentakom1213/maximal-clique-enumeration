@@ -1,10 +1,16 @@
-use std::fs::read_to_string;
+use std::{collections::HashSet, fs::read_to_string};
 
-/// グラフの隣接行列
+/// 頂点集合
+pub type VertexSet = HashSet<usize>;
+
+/// 隣接行列
 pub type AdjMatrix = Vec<Vec<bool>>;
 
-/// グラフの隣接リスト
+/// 隣接リスト（ベクタ）
 pub type AdjList = Vec<Vec<usize>>;
+
+/// 隣接リスト（集合型）
+pub type AdjSet = Vec<VertexSet>;
 
 /// 入力受け取り用構造体
 #[derive(Debug)]
@@ -69,6 +75,17 @@ impl GraphInput {
             .fold(vec![vec![]; self.v_size], |mut g, &(u, v)| {
                 g[u].push(v);
                 g[v].push(u);
+                g
+            })
+    }
+
+    /// 隣接リスト（セット）形式に変換
+    pub fn into_adjacent_set(&self) -> AdjSet {
+        self.edges
+            .iter()
+            .fold(vec![VertexSet::default(); self.v_size], |mut g, &(u, v)| {
+                g[u].insert(v);
+                g[v].insert(u);
                 g
             })
     }
