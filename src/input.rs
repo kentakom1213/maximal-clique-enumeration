@@ -43,7 +43,6 @@ impl GraphInput {
                 }
             }
         }
-
         Self {
             v_size,
             e_size,
