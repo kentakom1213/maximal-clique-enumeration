@@ -1,16 +1,16 @@
+use bit_set::BitSet;
 use std::{collections::HashSet, fs::read_to_string};
 
 /// 頂点集合
 pub type VertexSet = HashSet<usize>;
 
-/// 隣接行列
-pub type AdjMatrix = Vec<Vec<bool>>;
-
-/// 隣接リスト（ベクタ）
-pub type AdjList = Vec<Vec<usize>>;
+pub type VertexBitSet = BitSet;
 
 /// 隣接リスト（集合型）
 pub type AdjSet = Vec<VertexSet>;
+
+/// 隣接行列（BitSet）
+pub type AdjBitSet = Vec<VertexBitSet>;
 
 /// 入力受け取り用構造体
 #[derive(Debug)]
@@ -56,29 +56,6 @@ impl GraphInput {
         }
     }
 
-    /// 隣接行列形式に変換
-    pub fn into_adjacent_matrix(&self) -> AdjMatrix {
-        self.edges.iter().fold(
-            vec![vec![false; self.v_size]; self.v_size],
-            |mut m, &(u, v)| {
-                m[u][v] = true;
-                m[v][u] = true;
-                m
-            },
-        )
-    }
-
-    /// 隣接リスト形式に変換
-    pub fn into_adjacent_list(&self) -> AdjList {
-        self.edges
-            .iter()
-            .fold(vec![vec![]; self.v_size], |mut g, &(u, v)| {
-                g[u].push(v);
-                g[v].push(u);
-                g
-            })
-    }
-
     /// 隣接リスト（セット）形式に変換
     pub fn into_adjacent_set(&self) -> AdjSet {
         self.edges
@@ -88,5 +65,17 @@ impl GraphInput {
                 g[v].insert(u);
                 g
             })
+    }
+
+    /// 隣接行列（セット）形式に変換
+    pub fn into_adjacent_bitset(&self) -> AdjBitSet {
+        self.edges.iter().fold(
+            vec![VertexBitSet::with_capacity(self.v_size); self.v_size],
+            |mut g, &(u, v)| {
+                g[u].insert(v);
+                g[v].insert(u);
+                g
+            },
+        )
     }
 }
