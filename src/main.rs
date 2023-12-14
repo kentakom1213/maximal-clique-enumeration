@@ -1,4 +1,7 @@
-use maximal_clique_enumeration::input::{AdjList, AdjMatrix, GraphInput};
+use maximal_clique_enumeration::{
+    algorithms::bron_kerbosch_without_pivoting,
+    input::{GraphInput, VertexSet},
+};
 
 const DIMACS_TESTCASES: [&str; 37] = [
     "DIMACS_subset_ascii/brock200_2.clq",
@@ -41,9 +44,17 @@ const DIMACS_TESTCASES: [&str; 37] = [
 ];
 
 fn main() {
-    for &case in &DIMACS_TESTCASES {
-        let graph = GraphInput::input_from_ascii_file(case);
+    let input_1 = GraphInput::input_from_ascii_file(DIMACS_TESTCASES[0]);
+    let graph = input_1.into_adjacent_set();
 
-        println!("{}: v:{}, e:{}", case, graph.v_size, graph.e_size);
-    }
+    let mut res = vec![];
+    bron_kerbosch_without_pivoting(
+        &mut VertexSet::default(),
+        &mut (0..input_1.v_size).collect(),
+        &mut VertexSet::default(),
+        &graph,
+        &mut res,
+    );
+
+    println!("size: {}", res.len());
 }
