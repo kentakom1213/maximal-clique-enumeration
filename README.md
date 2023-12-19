@@ -6,14 +6,18 @@
 
 ```
 maximal-clique-enumeration
-  ├ (DIMACS_subset_ascii) # テストケース
+  ├ bench_result
+  │   └ simple_bench                   # brock200_2のみでのベンチマーク結果
+  ├ (DIMACS_subset_ascii)              # テストケース
   │   ├ brock200_2.clq
   │   └ ...
   ├ src
-  │   ├ algorithms.rs # 列挙アルゴリズムの実装
-  │   ├ bench.rs      # 時間の計測
-  │   ├ input.rs      # 入力の受け取り
-  │   └ main.rs       # ベンチマークの実行
+  │   ├ bin
+  │   │   ├ simple_bench.rs            # brock200_2のみでのベンチマーク
+  │   │   └ simple_bench_timestamp.rs  # タイムスタンプを記録
+  │   ├ algorithms.rs                  # 列挙アルゴリズムの実装
+  │   ├ input.rs                       # 入力の受け取り
+  │   └ main.rs                        # ベンチマークの実行
   └ util
       └ setup.sh # テストケースのダウンロード
 ```
