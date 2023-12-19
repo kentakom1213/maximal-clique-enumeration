@@ -16,6 +16,7 @@ maximal-clique-enumeration
   │   │   ├ simple_bench.rs            # brock200_2のみでのベンチマーク
   │   │   └ simple_bench_timestamp.rs  # タイムスタンプを記録
   │   ├ algorithms.rs                  # 列挙アルゴリズムの実装
+  │   ├ algorithms.rs                  # 列挙アルゴリズムの実装（タイムスタンプを記録）
   │   ├ input.rs                       # 入力の受け取り
   │   └ main.rs                        # ベンチマークの実行
   └ util
