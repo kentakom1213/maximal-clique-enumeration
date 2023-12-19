@@ -1,9 +1,9 @@
 #![allow(non_snake_case)]
 
+use crate::input::{AdjBitSet, AdjSet, VertexBitSet, VertexSet};
 use bit_set::BitSet;
 use itertools::Itertools;
-
-use crate::input::{AdjBitSet, AdjSet, VertexBitSet, VertexSet};
+use std::time;
 
 /// ピボットなしのBron-Kerbosch法
 /// - R: 極大クリークの部分グラフとしてすでに選んでいる頂点集合
