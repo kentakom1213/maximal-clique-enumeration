@@ -22,7 +22,7 @@ plt.plot(x, y)
 # グラフのタイトル、軸ラベルを設定する
 plt.title('timestamp with pivot bitset')
 plt.xlabel('pivot bitset size')
-plt.ylabel('time [ms]')
+plt.ylabel('time [ns]')
 plt.grid(True)
 
 # グラフを表示する

@@ -85,7 +85,7 @@ fn with_pivot_bitset() {
         &mut res,
     );
 
-    for stamp in res {
-        println!("{:?}", stamp);
+    for (i, &stamp) in res.iter().enumerate() {
+        println!("{} {}", i, stamp.as_nanos());
     }
 }

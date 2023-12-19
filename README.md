@@ -20,5 +20,5 @@ maximal-clique-enumeration
   │   ├ input.rs                       # 入力の受け取り
   │   └ main.rs                        # ベンチマークの実行
   └ util
-      └ setup.sh # テストケースのダウンロード
+      └ setup.sh                       # テストケースのダウンロード
 ```
