@@ -1,6 +1,9 @@
 use maximal_clique_enumeration::{
-    algorithms::{bron_kerbosch_without_pivoting, bron_kerbosch_without_pivoting_bitset},
-    input::{GraphInput, VertexSet, VertexBitSet},
+    algorithms::{
+        bron_kerbosch_with_pivoting, bron_kerbosch_with_pivoting_bitset,
+        bron_kerbosch_without_pivoting, bron_kerbosch_without_pivoting_bitset,
+    },
+    input::{GraphInput, VertexBitSet, VertexSet},
 };
 
 const DIMACS_TESTCASES: [&str; 37] = [
@@ -48,7 +51,7 @@ fn main() {
     let graph = input_1.into_adjacent_bitset();
 
     let mut res = vec![];
-    bron_kerbosch_without_pivoting_bitset(
+    bron_kerbosch_with_pivoting_bitset(
         &mut VertexBitSet::default(),
         &mut (0..input_1.v_size).collect(),
         &mut VertexBitSet::default(),
