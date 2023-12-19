@@ -6,13 +6,13 @@
 
 | Command | Mean [s] | Min [s] | Max [s] | Relative |
 |:---|---:|---:|---:|---:|
-| `cargo run` | 59.300 ± 0.898 | 58.480 | 61.174 | 1.00 |
+| `cargo run --bin simple_bench without_pivot_hashset` | 59.897 ± 0.894 | 59.140 | 61.794 | 1.00 |
 
 ### 頂点集合をBitSetで管理
 
 | Command | Mean [s] | Min [s] | Max [s] | Relative |
 |:---|---:|---:|---:|---:|
-| `cargo run` | 25.587 ± 0.538 | 24.872 | 26.760 | 1.00 |
+| `cargo run --bin simple_bench without_pivot_bitset` | 24.959 ± 0.078 | 24.862 | 25.113 | 1.00 |
 
 ## Bron-Kerbosch (with pivoting)
 
@@ -22,10 +22,10 @@
 
 | Command | Mean [s] | Min [s] | Max [s] | Relative |
 |:---|---:|---:|---:|---:|
-| `cargo run` | 24.492 ± 0.375 | 23.784 | 24.941 | 1.00 |
+| `cargo run --bin simple_bench with_pivot_hashset` | 23.955 ± 0.217 | 23.571 | 24.241 | 1.00 |
 
 ### 頂点集合をBitSetで管理
 
 | Command | Mean [s] | Min [s] | Max [s] | Relative |
 |:---|---:|---:|---:|---:|
-| `cargo run` | 10.253 ± 0.091 | 10.107 | 10.357 | 1.00 |
+| `cargo run --bin simple_bench with_pivot_bitset` | 10.066 ± 0.029 | 10.027 | 10.117 | 1.00 |
